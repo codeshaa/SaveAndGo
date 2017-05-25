@@ -66,7 +66,7 @@
 <?php
 	require('db.php');
 	session_start();
-	alert("Hi");
+	
     // If form submitted, insert values into the database.
     if (isset($_POST['username'])){
         $username = $_POST['username'];
@@ -76,8 +76,7 @@
 		$username = mysql_real_escape_string($username);
 		$password = stripslashes($password);
 		$password = mysql_real_escape_string($password);
-		alert($username);
-        alert($password);
+
 	//Checking is user existing in the database or not
         $query = "SELECT * FROM `users` WHERE username='$username' and password='".md5($password)."'";
 		$result = mysql_query($query) or die(mysql_error());

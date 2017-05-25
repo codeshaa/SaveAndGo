@@ -13,7 +13,7 @@ $password = "0766bf1f";
 //$username = "root";
 //$password = "";
 
-$connection = mysqli_connect($servername, $username, $password);
+$connection = mysql_connect($servername, $username, $password);
 if (!$connection){
     die("Database Connection Failed" . mysql_error());
 }
