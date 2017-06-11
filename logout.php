@@ -1,14 +1,10 @@
 <?php
-/*
-Author: Javed Ur Rehman
-Website: https://htmlcssphptutorial.wordpress.com
-*/
 ?>
 
 <?php
 session_start();
 if(session_destroy()) // Destroying All Sessions
 {
-header("Location: login.php"); // Redirecting To Home Page
+header("Location: save&go.php"); // Redirecting To Home Page
 }
 ?>

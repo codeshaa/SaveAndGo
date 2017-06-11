@@ -1,8 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION["username"])){
-header("Location: save&go.php");
-exit(); }
+if(empty($_SESSION["manager"]) && (empty($_SESSION["admin"]))){
+header("Location: managerlogin.php");
+exit();
+}
 ?>
 
 
@@ -14,6 +15,7 @@ exit(); }
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/save&go.css">
+		<link rel="stylesheet" type="text/css" href="css/manager.css">
      <link rel="shortcut icon" href="img/IMG_1419.ico">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
@@ -25,17 +27,21 @@ exit(); }
 			<a href="save&go.php"><img src="img/logo.png" title="Save & Go App - Search Engine Fuel Station" alt="Save & Go App - Search Engine Fuel Station"/></a>
 		</div><!-- end logo -->
 
+		<h1 class="title"><div class="form">
+		<p>Welcome, <a style="color:#F60;"><?php echo $_SESSION['username']; ?></a></p>
+		</div></h1>
+
 		<div id="menu_icon"></div>
 		<nav>
 			<ul>
                 <li><a href="save&go.php" title="Save & Go">Save & Go</a></li>
 				<li><a href="quicksearch.php" title="Quick Search">Quick Search</a></li>
-                <li><a href="login.php" class="selected" title="Login">Login</a> | <a href="registration.php" title="Register">Register</a></li>
-				<li><a href="managerlogin.php" title="Manager Login">Managers</a></li>
+				<li><a href="managerlogin.php" class="selected" title="Manager Login">Managers</a></li>
+
 				<!--<li><a href="contact.html">Contact Us</a></li>-->
 			</ul>
 		</nav><!-- end navigation menu -->
-
+    <a href="logout.php" style="text-decoration:none; color:#FF4A4A; font-size:14px; "><img src="img/logout.png" width="70" height="22" title="Logout"/></a>
 		<div class="footer clearfix">
 			<ul class="social clearfix">
 
@@ -66,7 +72,7 @@ exit(); }
 					</ul>	-->
 
 				</div><!-- end work_nav -->
-				<h1 class="title">Login</h1>
+				<h1 class="title">Edit Profile</h1>
 			</div>
 		</section><!-- end top -->
 
@@ -76,43 +82,47 @@ exit(); }
 
 <?php
 	require('db.php');
-    // If form submitted, insert values into the database.
-    if (isset($_POST['username'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-		$username = stripslashes($username);
-		$username = mysql_real_escape_string($username);
-		$password = stripslashes($password);
-		$password = mysql_real_escape_string($password);
-
-	//Checking is user existing in the database or not
-        $query = "SELECT * FROM `users` WHERE username='$username' and password='".md5($password)."'";
-		$result = mysql_query($query) or die(mysql_error());
-		$rows = mysql_num_rows($result);
-        if($rows==1){
-			$_SESSION['username'] = $username;
-			header("Location: index.php"); // Redirect user to index.php
-            }else{
-				echo "<div class='form'><h3>Username/password is incorrect.</h3><br/>Click here to <a href='login.php'>Login</a></div>";
-				}
-    }else{
+	// session_start();
 
 
+  $row = 0;
+  if((isset($_SESSION["manager"])) || (isset($_SESSION["admin"]))){
+		$manager_id = $_SESSION['admin'];
+		if (isset($_POST['password'])){
+				$password = $_POST['password'];
+					$password = md5($password);
+					$updatequery = "UPDATE `managers` SET password= $password WHERE id= $manager_id";
+					$updateres = mysql_query($updatequery) or die(mysql_error());
+          if($updateres){
+            echo "<div class='form'><h3>Password updated successfully.</h3><br/>Click here to <a href='managerlogin.php'>Login as Manager</a></div>";
+          }
+			}
+    $query = "SELECT * FROM `managers` WHERE id = $manager_id";
+    $res = mysql_query($query) or die(mysql_error());
+    $row = mysql_num_rows($res);
+		if($row>0){
+			while($row1 = mysql_fetch_assoc($res)) {
+        $resf = $row1;
+    	}
+		}
+  }
+  if($row == 1){    ?>
 
+		<div class="form">
+		<form name="manageredit" action="" method="post"></br></br></br></br>
+    <?php echo "Name: ".$resf['name']; ?> </br></br>
+    <?php echo "Username: ".$resf['username']; ?> </br></br></br></br>
+		Password: </br>
+		<input type="password" name="password" placeholder="Your new password" /></br></br>
+		<input type="submit" name="submit" value="Update Password" style="border:none; background-color:#3C9; color:#FFF; font-size:16px; border-radius:6px; cursor:pointer;" title="Profile"/>
+		</form>
+		</div>
+
+  <?php }
+  else{
+  echo "<div class='form'><h3>Oops! Something went wrong.</h3></div>";
+  }
 ?>
-
-<div class="form">
-<form action="" method="post" name="login">
-Username:</br>
-<input type="text" name="username" placeholder="Username" required /></br></br>
-Password:</br>
-<input type="password" name="password" placeholder="Password" required /></br></br>
-<input name="submit" type="submit" value="Login" style="border:none; background-color:#3C9; color:#FFF; font-size:16px; border-radius:6px; cursor:pointer;" title="Login"/>
-</form>
-<p>Not registered yet? <a href="registration.php" title="Register Here">Register Here</a></p>
-</div>
-<?php } ?>
 
 			</div><!-- end content -->
 		</section>

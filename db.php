@@ -9,9 +9,6 @@ $servername = "us-cdbr-iron-east-03.cleardb.net";
 $username = "bda662b3a1ddc1";
 $password = "0766bf1f";
 
-//$servername = "localhost";
-//$username = "root";
-//$password = "";
 
 $connection = mysql_connect($servername, $username, $password);
 if (!$connection){

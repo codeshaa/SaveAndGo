@@ -3,21 +3,21 @@
     Template Author : pixelhint.com
     Author Email    : contact@pixelhint.com
     Template Name   : Magnetic
-    
-    
+
+
     *****************************************
-    
-    
+
+
     - Fonts
     - General CSS
     - Header
-    - Home/portfolio 
-    - Inner page 
-    - Map/Contact page  
-    - Tooltip 
+    - Home/portfolio
+    - Inner page
+    - Map/Contact page
+    - Tooltip
     - Responsive code
-  
-    
+
+
 */
 
 
@@ -96,17 +96,17 @@ h6              { font-size: .75em; margin: 1.67em 0 }
 h1, h2, h3, h4,
 h5, h6          { font-weight: bolder }
 
-.clearfix:before,  
-.clearfix:after {  
-    content: " ";  
-    display: table;  
-}  
-.clearfix:after {  
-    clear: both;  
-}  
- 
-.clearfix {  
-    *zoom: 1;  
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
 }
 
 
@@ -125,17 +125,17 @@ h5, h6          { font-weight: bolder }
         width: 250px;
         min-height: 100%;
         padding: 0 0 0 50px;
-        background: #FFF; 
+        background: #FFF;
         float: left;
         overflow: hidden;
         z-index: 9999;
     }
-	
+
 	    header .logo{
         margin-top: 60px;
 		width:80%;
-		
-		
+
+
     }
 
     header nav ul{
@@ -143,7 +143,7 @@ h5, h6          { font-weight: bolder }
         overflow: hidden;
         margin-top: 90px;
         list-style: none;
-		
+
     }
 
     header nav ul li{
@@ -189,7 +189,7 @@ h5, h6          { font-weight: bolder }
         background: url('../img/sm.png') no-repeat;
         background-position: 0 0;
 
-		
+
     }
 
 
@@ -260,7 +260,7 @@ h5, h6          { font-weight: bolder }
     background: url('../img/men_icons.png') no-repeat;
 }
 
-#menu_icon{    
+#menu_icon{
     background-position: 0 0;
 }
 .close_menu{
@@ -294,14 +294,14 @@ h5, h6          { font-weight: bolder }
     content:"";
     display:table;
 }
- 
+
 .cf:after{
     clear:both;
 }
- 
+
 .cf{
     zoom:1;
-}    
+}
 
  /* Form wrapper styling */
 .search-wrapper {
@@ -309,7 +309,7 @@ width:60%;
 margin: 45px auto 50px auto;
 box-shadow: 0 1px 1px rgba(0, 0, 0, .4) inset, 0 1px 0 rgba(255, 255, 255, .2);
 }
- 
+
 /* Form text input */
  #station-logo{width:60%; height:80px; background-image:url(../img/station-logo.jpg); background-size: 100% 90px; background-repeat:no-repeat;}
 .search-wrapper input {
@@ -322,31 +322,31 @@ border: 0;
 background: #EEE;
 border-radius: 3px 0 0 3px;
 }
- 
+
 .search-wrapper input:focus {
     outline: 0;
     background: #fff;
     box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
 }
- 
+
 .search-wrapper input::-webkit-input-placeholder {
    color: #999;
    font-weight: normal;
    font-style: italic;
 }
- 
+
 .search-wrapper input:-moz-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
 }
- 
+
 .search-wrapper input:-ms-input-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
-}    
- 
+}
+
 /* Form submit button */
 .search-wrapper button {
 overflow: visible;
@@ -364,17 +364,17 @@ background: #D83C3C;
 border-radius: 0 3px 3px 0;
 text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
 }
-   
-.search-wrapper button:hover{     
+
+.search-wrapper button:hover{
     background: #e54040;
-}   
-   
-.search-wrapper button:active,
-.search-wrapper button:focus{   
-    background: #c42f2f;
-    outline: 0;   
 }
- 
+
+.search-wrapper button:active,
+.search-wrapper button:focus{
+    background: #c42f2f;
+    outline: 0;
+}
+
 .search-wrapper button:before { /* left arrow */
     content: '';
     position: absolute;
@@ -384,20 +384,20 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
     top: 12px;
     left: -6px;
 }
- 
+
 .search-wrapper button:hover:before{
     border-right-color: #e54040;
 }
- 
+
 .search-wrapper button:focus:before,
 .search-wrapper button:active:before{
         border-right-color: #c42f2f;
-}      
- 
+}
+
 .search-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
     border: 0;
     padding: 0;
-}    
+}
 
 
 /*  Home/portfolio  */
@@ -421,7 +421,7 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
     display: block;
     width: 100%;
     height:320px;
-    top: 0; 
+    top: 0;
     left: 0;
     background: #ffffff;
     opacity: 0;
@@ -782,7 +782,7 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
         float: right;
         margin: 24px 30px 0 0;
     }
-    
+
     header nav{
         width: 100%;
         position: absolute;
@@ -838,20 +838,20 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
         width: 100%;
     }
 	#station-logo{width:100%; height:80px; background-image:url(../img/station-logo.jpg); background-size: 100% 40px; background-repeat:no-repeat;}
-	
+
 	/*search*/
 .cf:before, .cf:after{
     content:"";
     display:table;
 }
- 
+
 .cf:after{
     clear:both;
 }
- 
+
 .cf{
     zoom:1;
-}    
+}
 
  /* Form wrapper styling */
 .search-wrapper {
@@ -872,31 +872,31 @@ border: 0;
 background: #EEE;
 border-radius: 3px 0 0 3px;
 }
- 
+
 .search-wrapper input:focus {
     outline: 0;
     background: #fff;
     box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
 }
- 
+
 .search-wrapper input::-webkit-input-placeholder {
    color: #999;
    font-weight: normal;
    font-style: italic;
 }
- 
+
 .search-wrapper input:-moz-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
 }
- 
+
 .search-wrapper input:-ms-input-placeholder {
     color: #999;
     font-weight: normal;
     font-style: italic;
-}    
- 
+}
+
 /* Form submit button */
 .search-wrapper button {
 overflow: visible;
@@ -914,17 +914,17 @@ background: #D83C3C;
 border-radius: 0 3px 3px 0;
 text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
 }
-   
-.search-wrapper button:hover{     
+
+.search-wrapper button:hover{
     background: #e54040;
-}   
-   
-.search-wrapper button:active,
-.search-wrapper button:focus{   
-    background: #c42f2f;
-    outline: 0;   
 }
- 
+
+.search-wrapper button:active,
+.search-wrapper button:focus{
+    background: #c42f2f;
+    outline: 0;
+}
+
 .search-wrapper button:before { /* left arrow */
     content: '';
     position: absolute;
@@ -934,19 +934,19 @@ text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
     top: 12px;
     left: -6px;
 }
- 
+
 .search-wrapper button:hover:before{
     border-right-color: #e54040;
 }
- 
+
 .search-wrapper button:focus:before,
 .search-wrapper button:active:before{
         border-right-color: #c42f2f;
-}      
- 
+}
+
 .search-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
     border: 0;
     padding: 0;
-}    
+}
 
 }

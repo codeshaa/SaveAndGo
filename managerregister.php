@@ -29,8 +29,8 @@ exit(); }
 			<ul>
                 <li><a href="save&go.php" title="Save & Go">Save & Go</a></li>
 				<li><a href="quicksearch.php" title="Quick Search">Quick Search</a></li>
-                <li><a href="login.php" title="Login">Login</a> | <a href="registration.php" class="selected" title="Register">Register</a></li>
-								<li><a href="managerlogin.php" title="Manager Login">Managers</a></li>
+                <li><a href="login.php" title="Login">Login</a> | <a href="registration.php" title="Register">Register</a></li>
+        <li><a href="managerlogin.php" title="Manager Login">Managers</a></li>
 				<!--<li><a href="contact.html">Contact Us</a></li>-->
 			</ul>
 		</nav><!-- end navigation menu -->
@@ -62,7 +62,7 @@ exit(); }
 					</ul>	-->
 
 				</div><!-- end work_nav -->
-				<h1 class="title">Register</h1>
+				<h1 class="title">Manager Register</h1>
 			</div>
 		</section><!-- end top -->
 
@@ -74,38 +74,71 @@ exit(); }
     // If form submitted, insert values into the database.
     if (isset($_POST['username'])){
         $username = $_POST['username'];
-		$email = $_POST['email'];
+		    $name = $_POST['name'];
         $password = $_POST['password'];
+        $contact = $_POST['contact'];
+        $address = $_POST['address'];
+        $station_id = $_POST['station_id'];
 		$username = stripslashes($username);
 		$username = mysql_real_escape_string($username);
-		$email = stripslashes($email);
-		$email = mysql_real_escape_string($email);
+		$name = stripslashes($name);
+		$name = mysql_real_escape_string($name);
 		$password = stripslashes($password);
 		$password = mysql_real_escape_string($password);
-		$trn_date = date("Y-m-d H:i:s");
-        $query = "INSERT into `users` (username, password, email, trn_date) VALUES ('$username', '".md5($password)."', '$email', '$trn_date')";
-        $result = mysql_query($query);
+    $contact = stripslashes($contact);
+		$contact = mysql_real_escape_string($contact);
+    $address = stripslashes($address);
+		$address = mysql_real_escape_string($address);
+		$pass = md5($password);
+		$status = 1;
+        $query = "INSERT into `managers` (name, username, password, contact, address, status, station_id) VALUES ('$name','$username','$pass','$contact','$address',$status,$station_id)";
 
-		if (empty($_POST["email"]))
-{
-$emailError = "Email is required";
-}
+				$result = mysql_query($query) or die(mysql_error());
+
+		if (empty($_POST["username"]))
+				{
+				$emailError = "User name is required";
+				}
 
         if($result){
-            echo "<div class='form'><h3>You are registered successfully.</h3><br/>Click here to <a href='login.php'>Login</a></div>";
+            echo "<div class='form'><h3>You are registered successfully. Your approval is pending. Please contact admin.</h3><br/>Click here to <a href='managerlogin.php'>Login for managers</a></div>";
         }
     }else{
+			$query_stations = "SELECT id, fuel_station_name, fuel_station_address FROM `station_area`";
+			$res = mysql_query($query_stations);
+
+				if ($res) {
+				    // output data of each row
+				    while($row = mysql_fetch_assoc($res)) {
+								$station_name[$row["id"]] = $row["fuel_station_name"]." - ".$row["fuel_station_address"];
+				    }
+			}
 ?>
+
 <div class="form">
-<form name="registration" action="" method="post">
+<form name="managerregistration" action="" method="post">
+Name: </br>
+<input type="text" name="name" placeholder="Name" required /></br></br>
 Username: </br>
 <input type="text" name="username" placeholder="Username" required /></br></br>
-Email: </br>
-<input type="email" name="email" placeholder="Email" required /></br></br>
 Password:</br>
 <input type="password" name="password" placeholder="Password" required /></br></br>
+Contact: </br>
+<input type="contact" name="contact" placeholder="Contact Phone" required /></br></br>
+Address:</br>
+<input type="address" name="address" placeholder="Address" required /></br></br>
+Station: </br>
+<select name = "station_id">
+	<?php
+foreach($station_name as $x => $x_value) {
+	echo  "<option value=$x > $x_value </option>";
+}
+?>
+</select></br></br>
+
+
 <input type="submit" name="submit" value="Register" style="border:none; background-color:#3C9; color:#FFF; font-size:16px; border-radius:6px; cursor:pointer;" title="Register"/>
-<p>Already registered? <a href="login.php" title="Login Here">Login Here</a></p>
+<p>Managers <a href="managerlogin.php" title="Login Here">Login Here</a></p>
 </form>
 </div>
 <?php } ?>

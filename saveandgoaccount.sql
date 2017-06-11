@@ -1,6 +1,6 @@
-CREATE DATABASE saveandgoaccount;
+CREATE DATABASE savengo;
 
-use saveandgoaccount;
+use savengo;
 
 CREATE TABLE users (
  id int(50) NOT NULL AUTO_INCREMENT,
@@ -24,7 +24,23 @@ CREATE TABLE users (
  navigate varchar(50)NOT NULL,
  PRIMARY KEY (id)
  );
- 
+
+ CREATE TABLE `managers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `contact` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(45) NOT NULL,
+  `status` INT NOT NULL,
+  `station_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `station_key_idx` (`station_id` ASC),
+  CONSTRAINT `station_key`
+    FOREIGN KEY (`station_id`)
+    REFERENCES `savengo`.`station_area` (`id`)
+	);
+
 
 
  INSERT INTO station_area (id, fuel_station_image, fuel_station_name, fuel_station_address, area, fuel_station_city, fuel_price, fuel_discount_code, link, navigate ) VALUES ('1','pictures/work3.jpg', 'BP', '3044, Great North Road', 'NewLynn', 'Auckland', '$1.47 Per litre', 'pictures/promocode.png', 'https://www.google.co.nz/maps/place/3044+Great+North+Rd,+New+Lynn,+Auckland+0600/@-36.9052385,174.6846042,17z/data=!3m1!4b1!4m5!3m4!1s0x6d0d414b872a3433:0x64bf0019a2bbb81d!8m2!3d-36.9052385!4d174.6867929', 'pictures/navigate.png');
@@ -39,5 +55,3 @@ CREATE TABLE users (
  INSERT INTO station_area (id, fuel_station_image, fuel_station_name, fuel_station_address, area, fuel_station_city, fuel_price, fuel_discount_code, link, navigate ) VALUES ('10','pictures/work2.jpg', 'CALTEX', '790, Great North Road', 'PointChevalier', 'Auckland', '$1.62 Per litre', 'pictures/promocode.png', 'https://www.google.co.nz/maps/place/790+Great+North+Rd,+Western+Springs,+Auckland+1022/@-36.8680807,174.7262863,17z/data=!3m1!4b1!4m5!3m4!1s0x6d0d4708f3ce9d7b:0x68a05445974cf2b2!8m2!3d-36.868085!4d174.728475', 'pictures/navigate.png');
  INSERT INTO station_area (id, fuel_station_image, fuel_station_name, fuel_station_address, area, fuel_station_city, fuel_price, fuel_discount_code, link, navigate ) VALUES ('11','pictures/work3.jpg', 'BP', '925, Mount Eden Road', 'PointChevalier', 'Auckland', '$1.74 Per litre', 'pictures/promocode.png', 'https://www.google.co.nz/maps/place/925+Mount+Eden+Rd,+Three+Kings,+Auckland+1024/@-36.8989838,174.7544823,17z/data=!3m1!4b1!4m5!3m4!1s0x6d0d463ebe77530d:0xb415bf9cfb3684b2!8m2!3d-36.8989881!4d174.756671', 'pictures/navigate.png');
  INSERT INTO station_area (id, fuel_station_image, fuel_station_name, fuel_station_address, area, fuel_station_city, fuel_price, fuel_discount_code, link, navigate ) VALUES ('12','pictures/work5.jpg', 'Mobil', '60, Green Lnv E', 'PointChevalier', 'Auckland', '$1.96 Per litre', 'pictures/promocode.png', 'https://www.google.co.nz/maps/place/60+Green+Ln+E,+Remuera,+Auckland+1050/@-36.8857555,174.8006716,17z/data=!3m1!4b1!4m5!3m4!1s0x6d0d48f7a4d780a3:0x72f4b8755ec326f0!8m2!3d-36.8857598!4d174.8028603', 'pictures/navigate.png');
- 
- 

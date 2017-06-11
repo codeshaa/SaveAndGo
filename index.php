@@ -25,7 +25,12 @@ Author: sai karnan
 		</div><!-- end logo -->
 
 <h1 class="title"><div class="form">
+<?php if(!isset($_SESSION["admin"])) { ?>
 <p>Welcome, <a style="color:#F60;"><?php echo $_SESSION['username']; ?></a></p>
+ <?php }
+ else { ?>
+ 	<p>Welcome, <a style="color:#F60;"><?php echo $_SESSION['admin']; ?></a></p>
+ <?php } ?> 
 </div></h1>
 
 		<div id="menu_icon"></div>
@@ -40,7 +45,7 @@ Author: sai karnan
 		<div class="footer clearfix">
 			<ul class="social clearfix">
 				<li><a href="https://www.facebook.com/SaveAGo/" target="_blank" class="fb" data-title="Facebook"></a></li>
-				
+
 				<li><a href="https://twitter.com/SaveNnGo" target="_blank" class="twitter" data-title="Twitter"></a></li>
 			</ul><!-- end social -->
 
@@ -127,11 +132,10 @@ Author: sai karnan
 			</a>
 		</div>
 
-		
 
-		
+
+
 	</section><!-- end main -->
-	
+
 </body>
 </html>
-
